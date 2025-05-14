@@ -1,12 +1,15 @@
 import {FC} from 'react';
 import {Button} from "@mui/material";
+
 interface CommonButtonProps {
-    text: string;
+    text: string,
+    onClick?: () =>void
 }
-export function CommonButton ({text}: CommonButtonProps) {
+
+export function CommonButton({text, onClick}: CommonButtonProps) {
 
     return (
-        <Button variant="outlined" sx={{mt: 2, mb: 2}}>{text}</Button>
+        <Button variant="outlined" sx={{mt: 2, mb: 2}} onClick={onClick}>{text}</Button>
     );
 };
 
