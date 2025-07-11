@@ -1,0 +1,12 @@
+:root {
+    --primary: #FF7043;
+    --secondary: #2C3E50;
+    --text:#121212;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}

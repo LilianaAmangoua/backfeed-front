@@ -56,11 +56,10 @@ npm install
 3. Lancer l'application en mode développement
 
 ```bash
-npm run dev 
+npm run dev
 ```
 
 L'application sera disponible sur : `http://localhost:5173`
-
 
 ## Structure
 
@@ -76,31 +75,29 @@ src/
 └── main.jsx     # Point d'entrée
 ```
 
-
 ## 🛣️ Roadmap Frontend
 
 Fonctionnalités à venir :
 
 ### 🔐 Auth & Sécurité
 
-* Stockage sécurisé des tokens (localStorage → peut évoluer vers cookies HttpOnly)
-* Déconnexion et expiration automatique
-* Gestion de refresh token
+- Stockage sécurisé des tokens (localStorage → peut évoluer vers cookies HttpOnly)
+- Déconnexion et expiration automatique
+- Gestion de refresh token
 
 ### 📝 Feedbacks
 
-* Filtres dynamiques (statut, projet, priorité)
-* Modification conditionnelle selon statut
-* Réponses du PO
+- Filtres dynamiques (statut, projet, priorité)
+- Modification conditionnelle selon statut
+- Réponses du PO
 
 ### 🎫 Tickets
 
-* Transformation de feedback en ticket
-* Vue PO + vue développeur avec tri et actions
-* Changement de statut dynamique
+- Transformation de feedback en ticket
+- Vue PO + vue développeur avec tri et actions
+- Changement de statut dynamique
 
 ### 📬 Notifications
 
-* Affichage en temps réel des changements
-* Badge sur icône + système d'alerte
-
+- Affichage en temps réel des changements
+- Badge sur icône + système d'alerte
