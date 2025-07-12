@@ -1,12 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-xs: 425px;
+    --breakpoint-sm: 768px;
+    --breakpoint-md: 992px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1440px;
+}
+
 :root {
     --primary: #FF7043;
     --secondary: #2C3E50;
     --text:#121212;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
 }
