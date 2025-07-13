@@ -6,10 +6,9 @@
     --breakpoint-md: 992px;
     --breakpoint-lg: 1024px;
     --breakpoint-xl: 1440px;
-}
 
-:root {
-    --primary: #FF7043;
-    --secondary: #2C3E50;
-    --text:#121212;
+    --color-accent-orange: #FF7043;
+    --color-primary-blue: #2C3E50;
+    --color-black-text: #121212;
+    --color-disabled-grey: #E0E0E0;
 }

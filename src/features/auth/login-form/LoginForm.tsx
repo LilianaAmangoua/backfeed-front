@@ -1,58 +1,48 @@
-import { useState } from "react";
-import styles from "./LoginForm.module.css";
-import CommonButton from "../../../components/button/CommonButton.tsx";
-import { logUser } from "./AuthService.ts";
+import Button from "../../../components/common/Button.tsx";
 import picture from "../../../assets/login-picture.jpg";
 import logo from "../../../assets/logo.svg";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider } from "react-hook-form";
 import { EmailInputField } from "../../../components/form/EmailInputField.tsx";
 import { PasswordInputField } from "../../../components/form/PasswordInputField.tsx";
-
-type LoginFormData = {
-    email: string;
-    password: string;
-};
+import { useLoginForm } from "./useLoginForm.ts";
 
 const LoginForm = () => {
-    const methods = useForm();
+    const { methods, loginError, handleLogin } = useLoginForm();
     const { handleSubmit } = methods;
-    const [loginError, setLoginError] = useState("");
-
-    const handleLogin = async (data: LoginFormData) => {
-        try {
-            await logUser({
-                email: data.email,
-                password: data.password,
-            });
-        } catch (e) {
-            console.log(e);
-            setLoginError("Invalid Credentials");
-        }
-    };
 
     return (
-        <main className={styles.loginWrapper}>
+        <>
             <title>Se connecter </title>
+            <main className="flex justify-center px-8 md:px-0 md:pl-6 h-[100vh] md:justify-between">
+                <FormProvider {...methods}>
+                    <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col justify-center gap-1 w-[500px] text-black-text">
+                        <img src={logo} alt={"logo de backfeed"} className="max-h-10 max-w-10" />
+                        <div className="mb-5 mt-3 text-primary-blue">
+                            <h1 className="font-normal text-4xl md:text-5xl">Se connecter</h1>
+                            <p>Retrouvez votre Backfeed.</p>
+                        </div>
 
-            <FormProvider {...methods}>
-                <form onSubmit={handleSubmit(handleLogin)} className={styles.loginForm}>
-                    <img src={logo} alt={"logo de backfeed"} className={styles.logo} />
-                    <h1 className={styles.loginTitle}>Se connecter</h1>
-                    <p>Retrouvez votre Backfeed.</p>
-                    <hr />
+                        <hr className="w-5/6" />
 
-                    <EmailInputField label={"Adresse mail"} inputName={"email"} placeholder={"exemple@gmail.com"} type={"email"} />
-                    <PasswordInputField label={"Mot de passe"} inputName={"password"} />
+                        <EmailInputField label={"Adresse mail"} inputName={"email"} placeholder={"exemple@gmail.com"} type={"email"} />
+                        <PasswordInputField label={"Mot de passe"} inputName={"password"} />
 
-                    <a href="#">Mot de passe oublié ?</a>
-                    {loginError && <p className={"text-red-600 mt-1 text-center"}>{loginError}</p>}
+                        <a href="#" className="underline">
+                            Mot de passe oublié ?
+                        </a>
+                        {loginError && <p className={"text-red-600 mt-1 text-center"}>{loginError}</p>}
 
-                    <CommonButton text={"Se connecter"} type={"submit"} variant={"secondary"} />
-                </form>
-            </FormProvider>
+                        <Button type="submit" variant="secondary">
+                            Se connecter
+                        </Button>
+                    </form>
+                </FormProvider>
 
-            <img src={picture} alt="personnes collaborant autour d'un ordinteur" className="max-w-[50%] max-h-[100vh] hidden sm:block" />
-        </main>
+                <div className="h-screen hidden md:w-3/6 md:block ">
+                    <img src={picture} alt="collègues qui collaborent autour d'un ordinateur" className="w-full h-full object-cover" />
+                </div>
+            </main>
+        </>
     );
 };
 

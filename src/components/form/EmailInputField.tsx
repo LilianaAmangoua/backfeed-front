@@ -10,11 +10,9 @@ interface InputProps {
 export function EmailInputField({ label, inputName, placeholder, type }: InputProps) {
     const {
         register,
-        formState: { errors },
-        watch
+        formState: { errors }
     } = useFormContext();
 
-    console.log(watch(label))
 
     return (
         <>
@@ -23,7 +21,7 @@ export function EmailInputField({ label, inputName, placeholder, type }: InputPr
             </label>
             <input
                 id={inputName}
-                className={"px-4 py-3 border-solid border-gray-500 rounded-md w-[450px] focus:outline-solid outline-1 outline-(--secondary)"}
+                className={"px-4 py-3 border border-gray-500 rounded-md md:w-[450px] focus:outline focus:outline-(--secondary) w-full"}
                 placeholder={placeholder}
                 {...register(inputName, { required: `${label} est requis` })}
                 type={type}
