@@ -4,3 +4,7 @@ import type { User } from "../../../@types/User.ts";
 export const logUser = (user: User) => {
     return api.post("/auth/login", user);
 };
+
+export const getRole = () => {
+    return api.get("/auth/role");
+}

@@ -16,12 +16,12 @@ export function EmailInputField({ label, inputName, placeholder, type }: InputPr
 
     return (
         <>
-            <label className={"text-left"} htmlFor={inputName}>
+            <label className={"text-left pt-4"} htmlFor={inputName}>
                 {label}
             </label>
             <input
                 id={inputName}
-                className={"px-4 py-3 border border-gray-500 rounded-md md:w-[450px] focus:outline focus:outline-(--secondary) w-full"}
+                className={"px-4 py-3 border border-gray-500 rounded-md focus:outline focus:outline-(--secondary) w-full"}
                 placeholder={placeholder}
                 {...register(inputName, { required: `${label} est requis` })}
                 type={type}

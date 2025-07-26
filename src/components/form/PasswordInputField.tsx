@@ -18,18 +18,18 @@ export function PasswordInputField({ label, inputName }: InputProps) {
 
     return (
         <>
-            <label className={"text-left"} htmlFor={inputName}>{label}</label>
-            <div className="relative">
+            <label className={"text-left pt-2"} htmlFor={inputName}>{label}</label>
+            <div className="relative pb-4">
                 <input
                     type={show ? "text" : "password"}
                     id={inputName}
                     {...register(inputName, { required: `${label} est requis` })}
-                    className="px-4 py-3 border border-gray-500 rounded-md md:w-[450px] w-full focus:outline outline-(--secondary)"
+                    className="px-4 py-3 border border-gray-500 rounded-md w-full focus:outline outline-(--secondary)"
                 />
                 <button
                     type="button"
                     onClick={() => setShow(!show)}
-                    className="absolute left-[270px] bottom-[1rem] text-gray-500 cursor-pointer"
+                    className="absolute right-[10px] bottom-[28px] text-gray-500 cursor-pointer"
                 >
                     {show ? <VisibilityOffIcon/> : <VisibilityIcon/>}
                 </button>

@@ -13,28 +13,30 @@ const LoginForm = () => {
     return (
         <>
             <title>Se connecter </title>
-            <main className="flex justify-center px-8 md:px-0 md:pl-6 h-[100vh] md:justify-between">
+            <main className="flex justify-center px-8 md:px-0 md:pl-6 h-[100vh] md:justify-between gap-8">
                 <FormProvider {...methods}>
                     <form onSubmit={handleSubmit(handleLogin)} className="flex flex-col justify-center gap-1 w-[500px] text-black-text">
                         <img src={logo} alt={"logo de backfeed"} className="max-h-10 max-w-10" />
                         <div className="mb-5 mt-3 text-primary-blue">
                             <h1 className="font-normal text-4xl md:text-5xl">Se connecter</h1>
-                            <p>Retrouvez votre Backfeed.</p>
+                            <p className="pt-2">Retrouvez votre Backfeed.</p>
                         </div>
 
-                        <hr className="w-5/6" />
+                        <hr className="w-full" />
 
-                        <EmailInputField label={"Adresse mail"} inputName={"email"} placeholder={"exemple@gmail.com"} type={"email"} />
-                        <PasswordInputField label={"Mot de passe"} inputName={"password"} />
+                            <EmailInputField label={"Adresse mail"} inputName={"email"} placeholder={"exemple@gmail.com"} type={"email"} />
+                            <PasswordInputField label={"Mot de passe"} inputName={"password"} />
 
-                        <a href="#" className="underline">
-                            Mot de passe oublié ?
-                        </a>
-                        {loginError && <p className={"text-red-600 mt-1 text-center"}>{loginError}</p>}
+                            <a href="#" className="underline mb-3">
+                                Mot de passe oublié ?
+                            </a>
+                            {loginError && <p className={"text-red-600 mt-1 text-center"}>{loginError}</p>}
 
-                        <Button type="submit" variant="secondary">
-                            Se connecter
-                        </Button>
+                            <Button type="submit" variant="secondary">
+                                Se connecter
+                            </Button>
+
+
                     </form>
                 </FormProvider>
 

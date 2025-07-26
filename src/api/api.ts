@@ -5,20 +5,29 @@ const api = axios.create({
     headers: {
         "Content-Type": "application/json",
     },
+    withCredentials: true
 });
 
-api.interceptors.request.use(
-    (config) => {
-        const token = localStorage.getItem("token");
-        if (token) {
-            config.headers["Authorization"] = ` Bearer ${token}`;
+api.interceptors.response.use(
+    (response) => response,
+    async (error) => {
+        const originalRequest = error.config;
+        const isUnauthorized = error.response?.status === 401;
+        const isLoginRequest = originalRequest?.url?.includes("/login");
+
+        if (isUnauthorized && !isLoginRequest && !originalRequest._retry) {
+            originalRequest._retry = true;
+
+            try {
+                await api.post("/auth/refresh");
+                return api(originalRequest);
+            } catch (refreshError) {
+                console.error("Refresh failed ", refreshError);
+                window.location.href = "/login?expired=true";
+            }
         }
-        return config;
-    },
-    (error) => {
-        console.log(error);
+
         return Promise.reject(error);
     }
 );
-
 export default api;
